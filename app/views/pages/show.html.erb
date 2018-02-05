@@ -1,0 +1,25 @@
+<div class="banner">
+  <a class="logo" href="/">
+    <h1 class="hover_here">Blahnana</h1>
+  </a>
+</div>
+
+<div class="">
+  <a class="hover_here" href="/stories/new">Start a new story</a>
+</div>
+
+
+
+<div class="stories_container">
+  <% @stories.each do |story| %>
+  <div class="story">
+    <a href="/stories/<%=story.id%>">
+      <%= story.title%>
+    </a>
+  </div>
+    <a href="/stories/<%=story.id%>">
+      <img src="<%= story.image_url%>" alt="">
+    </a>
+  <%end%>
+
+</div>

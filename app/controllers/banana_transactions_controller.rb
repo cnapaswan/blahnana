@@ -1,0 +1,2 @@
+class BananaTransactionsController < ApplicationController
+end

@@ -1,0 +1,2 @@
+class BananaTransaction < ApplicationRecord
+end

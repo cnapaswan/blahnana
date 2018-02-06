@@ -11,13 +11,19 @@
   <% @story_entries.each do |story_entry| %>
   <hr>
   <span><%= story_entry.user_id%></span>
+  <img src="<%= story_entry.user.image_url%>" alt="">
   <span><%= story_entry.user.username%></span>
+  <span class="banana_receive">&#x1F34C;</span>
+  <span><%= @story.banana %></span>
   <p><%= story_entry.body%></p>
 <% end %>
 </div>
 
 
-
+<form action="/bananas" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="story_id" value="<%= @story.id %>">
+</form>
 
 
 

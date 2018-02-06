@@ -16,7 +16,7 @@ class StoryEntriesController < ApplicationController
     @story_entries.user_id = params[:user_id]
     @story_entries.body = params[:body]
     if @story_entries.save
-
+      # render json: @story_entries
       redirect_to "/stories/#{params[:story_id]}"
 
     else

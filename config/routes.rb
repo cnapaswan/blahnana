@@ -14,11 +14,16 @@ Rails.application.routes.draw do
   get '/buynana', to: 'buynanas#show'
   post '/stories_entries', to: 'stories_entries#create'
   post '/give_banana', to: 'banana_transactions#create'
+  post 'stories_entries', to: 'stories_entries#create'
+
+  post '/api/create', to: 'story_entries#api_create'
+  get '/api/all', to: 'story_entries#api_all'
+
+
 
   resources :charges
   resources :banana_transactions
   resources :story_entries
   resources :users
   resources :stories
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

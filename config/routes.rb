@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/stories/new', to: 'stories#new'
   post '/stories', to: 'stories#create'
   get '/buynana', to: 'buynanas#show'
+  post 'stories_entries', to: 'stories_entries#create'
 
 
   #mia route end

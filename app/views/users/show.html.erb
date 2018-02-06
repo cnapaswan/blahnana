@@ -2,10 +2,13 @@
 <h1>
   <%= @user.username%>
 </h1>
-<img src="@user.image_url" alt="">
+<img src="<%=@user.image_url%>" alt="">
 
 <p>
-  username: <%= @user.username %>
-  email: <%= @user.email %>
-  banana: <%= @user.banana %>
+  username: <%= @user.username %> <br>
+  email: <%= @user.email %> <br>
+  <a href="/buynana">
+    banana: <%= @user.banana %> <br>
+  </a>
+  
 </p>

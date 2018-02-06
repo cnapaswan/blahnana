@@ -1,0 +1,35 @@
+<h3>home(pages/home.h.e)</h3>
+
+
+<div class="banner">
+  <a class="logo" href="/"><h1 class="hover_here">Blahnana</h1></a>
+</div>
+
+<div class="">
+  <a class="hover_here" href="/">Start a new story</a>
+</div>
+
+<div class="">
+  <img src="" >
+</div>
+
+<div class="log_box">
+  <div class="">
+  <% if logged_in? %>
+    logged in as <%= current_user.email %>
+  </div>
+    <form class="" action="/session" method="post" enctype='multipart/form-data'>
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="delete">
+      <button>Logout</button>
+    </form>
+  <% else %>
+    <div class="">
+    <a class="hover_here" href="/login">Login/Sign up</a>
+    </div>
+  <% end %>
+</div>
+
+<div class="stories_container">
+
+</div>

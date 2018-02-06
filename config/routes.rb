@@ -12,26 +12,12 @@ Rails.application.routes.draw do
   get '/stories/new', to: 'stories#new'
   post '/stories', to: 'stories#create'
   get '/buynana', to: 'buynanas#show'
+  post '/stories_entries', to: 'stories_entries#create'
+  post '/give_banana', to: 'banana_transactions#create'
   post 'stories_entries', to: 'stories_entries#create'
 
   post '/api/create', to: 'story_entries#api_create'
   get '/api/all', to: 'story_entries#api_all'
-  # get '/pokemons/play', to: 'pokemons#play'
-  
-
-  #mia route end
-  #wally
-  #get '/stories/:id', to: 'stories#show'
-
-
-
-
-  #get '/', to: 'pages#home'
-
-
-  #
-  #get '/login', to: 'session#new'
-  #post '/session', to: 'session#create'
 
 
 
@@ -40,5 +26,4 @@ Rails.application.routes.draw do
   resources :story_entries
   resources :users
   resources :stories
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

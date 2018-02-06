@@ -3,6 +3,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @story_entries = @story.story_entries
+
   end
 
   def new
@@ -17,6 +18,7 @@ class StoriesController < ApplicationController
     else
       redirect_to 'stories/new'
     end
-
   end
+
+
 end

@@ -1,3 +1,4 @@
+
 /*layout*/
 body {
   background-color: rgb(255,180,70);
@@ -153,4 +154,9 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+/*story page*/
+.hide {
+  display: none;
 }

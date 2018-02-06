@@ -27,7 +27,7 @@
 </div>
 
 
-<div class="new_entry, hide">
+<div class="new_entry hide">
   <form action="/api/create" method="post">
   <!-- <form action="/story_entries" method="post"> -->
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
@@ -46,10 +46,34 @@ var options = {
 }
 
 $.ajax(options).done(function(response){
-console.log(response)
+console.log(response[response.length-1])
+console.log("response[response.length-1].user_id = "+response[response.length-1].user_id)
+console.log("current_user.id = "+ <%= current_user.id %>)
+debugger;
 
-
+// var $summonBtn = $('.summon')
+//
+// $summonBtn.click(function(){
+//
+//   var pokeNumOne = response[rand]
+//   var $container = $('.pokemon-hugger')
+//   var $showPoke = $('<div>')
+//   var $pokeName = $('<h1>').text(pokeNumOne.nickname)
+//   var $pokeFace = $('<img>').attr('src',pokeNumOne.imgurl)
+//   var $pokeSpc = $('<li>').text("species: " + pokeNumOne.species)
+//   var $pokeLev = $('<li>').text("level: " + pokeNumOne.level)
+//   $showPoke.append($pokeName)
+//   $showPoke.append($pokeFace)
+//   $showPoke.append($pokeSpc)
+//   $showPoke.append($pokeLev)
+//   $container.append($showPoke)
+//
+// })
+  $(".new_entry").removeClass("hide");
+  if (response[response.length-1].user_id === <%= current_user.id %>){
+    alert ("Please wait for someone else to write")
+     $(".new_entry").addClass("hide");
+   }
 })
-
 
 </script>

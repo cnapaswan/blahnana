@@ -1,9 +1,9 @@
 <a href="/">Home</a>
 
 <div>
-  
+
   <h1><%= @story.title%></h1>
-  
+
 </div>
 
 
@@ -30,3 +30,20 @@
     <button>Enter</button>
   </form>
 </div>
+
+<script>
+
+var options = {
+  url: '/api/all',
+  method: 'get'
+}
+
+$.ajax(options).done(function(response){
+
+console.log(response)
+
+
+})
+
+
+</script>

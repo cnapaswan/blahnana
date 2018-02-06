@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   get '/buynana', to: 'buynanas#show'
   post 'stories_entries', to: 'stories_entries#create'
 
+  post '/api/create', to: 'story_entries#api_create'
+  get '/api/all', to: 'story_entries#api_all'
+  # get '/pokemons/play', to: 'pokemons#play'
+  
 
   #mia route end
   #wally

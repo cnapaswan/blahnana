@@ -3,9 +3,36 @@
 .top-nav {
   display: flex;
   width: 100%;
-  height: 15px;
+  height: 40px;
+  padding: 4px 10px;
+  margin: 10px 0;
+  align-content: center;
+  justify-content: flex-end;
+}
+
+.username, .banana-status, .user-image {
+  display: flex;
+  align-content: center;
+  align-items: center;
 }
 
 .username {
+  width: 10%;
   color: black;
+
 }
+
+.banana-status {
+  width: 20%;
+}
+
+.banana-status>a {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.user-image {
+  width: 5%;
+}
+

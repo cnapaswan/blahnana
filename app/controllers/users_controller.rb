@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     user = User.new
     user.username = params[:username]
     user.email = params[:email]
+    user.image_url = params[:image_url]
     user.password = params[:password]
     user.banana = 20
     if user.save 

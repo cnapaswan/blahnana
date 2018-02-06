@@ -17,7 +17,8 @@ class StoryEntriesController < ApplicationController
     @story_entries.body = params[:body]
     if @story_entries.save
 
-      redirect_to '/'
+      redirect_to "/stories/#{params[:story_id]}"
+
     else
       raise "booyah!"
     end

@@ -1,18 +1,32 @@
 <a href="/">Home</a>
 
+<div>
+  
+  <h1><%= @story.title%></h1>
+  
+</div>
+
+
 <div class="current_story">
-<% @story_entries.each do |story_entry| %>
-<hr>
-<img src="story_entry.users.image_url" alt="">
-<p><%= story_entry.users.username %> :-   <%= story_entries.body %></p>
+  <% @story_entries.each do |story_entry| %>
+  <hr>
+  <span><%= story_entry.user_id%></span>
+  <span><%= story_entry.user.username%></span>
+  <p><%= story_entry.body%></p>
 <% end %>
 </div>
 
+
+
+
+
+
 <div class="new_entry">
-<form action="/story_entries" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="story_id" value="<%= @story_entry.id %>">
-  <textarea name="body" rows="5" cols="100"></textarea>
-  <button>Enter</button>
-</form>
+  <form action="/story_entries" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+     <input type="hidden" name="story_id" value="<%= @story.id %>">
+      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    <textarea name="body" rows="5" cols="100"></textarea>
+    <button>Enter</button>
+  </form>
 </div>

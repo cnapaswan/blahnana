@@ -13,23 +13,26 @@
   </head>
 
   <body>
+    <div class="top-nav">
       <% if current_user %>
-      Signed in as 
-      <a href="/users/<%= current_user.id %>">
-        <%= current_user.username %> 
-      </a>
-      <a href="#">
-        <div class="banana_display">
-        <span class="banana_current_user">&#x1F34C;</span>
-        <span><%= current_user.banana%></span>
-        </div>
-      </a>
+      
+      <div class="username">
+        <a href="/users/<%= current_user.id %>">
+          <%= current_user.username %>
+        </a>
+      </div> <!--end of username-->
+
+      <div class="banana_status">
+        <a href="/buynana">
+          <img class="banana-icon" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon">
+          <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/337476-200.png" alt="#">
+          <span><%= current_user.banana%></span>
+        </a>
+      </div><!--end of banana status-->
+
       <div class="user_image">
         <img src="<%= current_user.image_url %>" >
       </div>
-      <div>
-
-    
 
       | <%= link_to "Logout", '/logout' %>
       
@@ -39,9 +42,9 @@
 
       | <%= link_to 'Signup', '/signup' %>
       <% end %>
-      
 
-
+    </div><!--end of top nav-->
+    
     <%= yield %>
   </body>
 </html>

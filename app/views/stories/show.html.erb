@@ -11,6 +11,7 @@
   <% @story_entries.each do |story_entry| %>
   <hr>
   <span><%= story_entry.user_id%></span>
+  <img src="<%= story_entry.user.image_url%>" alt="">
   <span><%= story_entry.user.username%></span>
   <p><%= story_entry.body%></p>
 <% end %>

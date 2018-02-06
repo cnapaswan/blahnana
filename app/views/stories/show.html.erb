@@ -13,18 +13,18 @@
   <span><%= story_entry.user_id%></span>
   <img src="<%= story_entry.user.image_url%>" alt="">
   <span><%= story_entry.user.username%></span>
-  <span class="banana_receive">&#x1F34C;</span>
-  <span><%= @story.banana %></span>
+  <span class="entry_user_bnn"><%= story_entry.user.banana %></span>
   <p><%= story_entry.body%></p>
-<% end %>
+
+  <form action="/give_banana" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
+    <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
+    <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
+    <button>&#x1F34C;</button>
+  </form>
+<% end %> <!--end of current_story-->
 </div>
-
-
-<form action="/bananas" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="story_id" value="<%= @story.id %>">
-</form>
-
 
 
 <div class="new_entry hide">
@@ -32,7 +32,7 @@
   <!-- <form action="/story_entries" method="post"> -->
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
      <input type="hidden" name="story_id" value="<%= @story.id %>">
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
     <textarea name="body" rows="5" cols="100"></textarea>
     <button>Enter</button>
   </form>

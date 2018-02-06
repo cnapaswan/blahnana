@@ -1,25 +1,28 @@
 <div class="banner">
-  <a class="logo" href="/">
-    <h1 class="hover_here">Blahnana</h1>
-  </a>
+  <p>welcome to... </p> 
+  <h1>B l a h n a n a</h1>
+  <p>
+    a creative community for you to blah bits and pieces into stories. 
+  </p>
 </div>
 
-<div class="">
-  <a class="hover_here" href="/stories/new">Start a new story</a>
+<div class="new-story">
+  <div class="new-story-btn">
+    <a href="/stories/new">Start a new story</a>
+  </div>
 </div>
 
+<h1 class="invite">make these stories more awesome ? go write your twist !</h1>
 
 
-<div class="stories_container">
+
+<div class="stories-container">
   <% @stories.each do |story| %>
   <div class="story">
     <a href="/stories/<%=story.id%>">
       <%= story.title%>
-    </a>
-  </div>
-    <a href="/stories/<%=story.id%>">
       <img src="<%= story.image_url%>" alt="">
     </a>
+  </div><!--end of story (ooh snap)-->
   <%end%>
-
 </div>

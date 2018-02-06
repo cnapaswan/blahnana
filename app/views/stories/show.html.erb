@@ -28,7 +28,8 @@
 
 
 <div class="new_entry">
-  <form action="/story_entries" method="post">
+  <form action="/api/create" method="post">
+  <!-- <form action="/story_entries" method="post"> -->
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
      <input type="hidden" name="story_id" value="<%= @story.id %>">
     <input type="hidden" name="user_id" value="<%= current_user.id %>">
@@ -45,7 +46,6 @@ var options = {
 }
 
 $.ajax(options).done(function(response){
-
 console.log(response)
 
 

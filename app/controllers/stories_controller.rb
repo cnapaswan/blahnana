@@ -6,9 +6,6 @@ class StoriesController < ApplicationController
 
   end
 
-  def new
-  end
-
   def create
     story = Story.new
     story.title = params[:title]
@@ -16,7 +13,7 @@ class StoriesController < ApplicationController
     if story.save
       redirect_to "/"
     else
-      redirect_to 'stories/new'
+      redirect_to '/'
     end
   end
 

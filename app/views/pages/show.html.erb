@@ -7,9 +7,20 @@
 </div>
 
 <div class="new-story">
-  <div class="new-story-btn">
-    <a href="/stories/new">Start a new story</a>
-  </div>
+  <button class="new-story-btn">
+    Start a new story
+  </button>
+</div>
+
+<div class="new-story-form hide">
+  <form action="/stories" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <label for="">Title</label>
+    <input type="text" name="title">
+    <label for="">Image Url</label>
+    <input type="text" name="image_url">
+    <button>create</button>
+  </form> 
 </div>
 
 <h1 class="invite">make these stories more awesome ? go write your twist !</h1>
@@ -26,3 +37,15 @@
   </div><!--end of story (ooh snap)-->
   <%end%>
 </div>
+
+
+
+<script type="text/javascript">
+  
+  $('.new-story-btn').click(function(){
+    console.log("im clicked")
+    $('.new-story-form').removeClass('hide')
+
+  })
+
+</script>

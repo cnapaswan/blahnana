@@ -11,8 +11,8 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show'
   #story_database
-  get '/stories/new', to: 'stories#new'
   post '/stories', to: 'stories#create'
+  
   #stories_entries_database
   post '/stories_entries', to: 'stories_entries#create'
   post '/api/create', to: 'story_entries#api_create'

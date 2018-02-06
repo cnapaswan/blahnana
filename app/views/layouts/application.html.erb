@@ -18,9 +18,18 @@
       <a href="/users/<%= current_user.id %>">
         <%= current_user.username %> 
       </a>
+      <a href="#">
+        <div class="banana_display">
+        <span class="banana_current_user">&#x1F34C;</span>
+        <span><%= current_user.banana%></span>
+        </div>
+      </a>
       <div class="user_image">
         <img src="<%= current_user.image_url %>" >
       </div>
+      <div>
+
+    
 
       | <%= link_to "Logout", '/logout' %>
       

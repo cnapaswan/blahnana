@@ -13,34 +13,44 @@
   <span><%= story_entry.user_id%></span>
   <img src="<%= story_entry.user.image_url%>" alt="">
   <span><%= story_entry.user.username%></span>
-  <span class="banana_receive">&#x1F34C;</span>
-  <span><%= @story.banana %></span>
+  <span class="entry_user_bnn"><%= story_entry.user.banana %></span>
   <p><%= story_entry.body%></p>
-<% end %>
+
+  <form action="/give_banana" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
+    <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
+    <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
+    <button>&#x1F34C;</button>
+  </form>
+<% end %> <!--end of current_story-->
 </div>
-
-
-<form action="/bananas" method="post">
-  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-  <input type="hidden" name="story_id" value="<%= @story.id %>">
-</form>
-
 
 
 <div class="new_entry">
   <form action="/story_entries" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
      <input type="hidden" name="story_id" value="<%= @story.id %>">
-      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
     <textarea name="body" rows="5" cols="100"></textarea>
     <button>Enter</button>
   </form>
 </div>
 
 <script type="text/javascript">
-  var banana = document.querySelector('.banana');
 
-  banana.addEventListener('click', function(event) {
+  var $banana = $('.give_banana')
+  $banana.click(function(event) {
+    console.log('im clicked')
+
+
+    var $entryUserBnn = $('.entry_user_bnn')
+    console.log($entryUserBnn.text)
+  })
+
+
+
+/*
     var bananaN = event.target.closest('.project_details')
     var bananaCount = bananaN.querySelector('.countHearts');
     var bananaGive = document.querySelector('.countBananas_user')
@@ -49,5 +59,5 @@
       bananaCount.textContent++;
       heartGive.textContent--;
     }
-  })
+  })*/
 </script>

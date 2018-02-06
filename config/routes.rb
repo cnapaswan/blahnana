@@ -12,24 +12,8 @@ Rails.application.routes.draw do
   get '/stories/new', to: 'stories#new'
   post '/stories', to: 'stories#create'
   get '/buynana', to: 'buynanas#show'
-  post 'stories_entries', to: 'stories_entries#create'
-
-
-  #mia route end
-  #wally
-  #get '/stories/:id', to: 'stories#show'
-
-
-
-
-  #get '/', to: 'pages#home'
-
-
-  #
-  #get '/login', to: 'session#new'
-  #post '/session', to: 'session#create'
-
-
+  post '/stories_entries', to: 'stories_entries#create'
+  post '/give_banana', to: 'banana_transactions#create'
 
   resources :charges
   resources :banana_transactions

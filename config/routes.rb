@@ -3,13 +3,13 @@ Rails.application.routes.draw do
 
 
   #get '/', to: 'pages#home'
-  #get '/stories/:id', to: 'stories#show' 
+  #get '/stories/:id', to: 'stories#show'
   #get '/stories/new', to: 'stories#new'
   #post '/stories', to: 'stories#create'
   #get '/login', to: 'session#new'
   #post '/session', to: 'session#create'
   #get '/users/:id', to: 'user#show'
-  
+
 
 
   resources :banana_transactions

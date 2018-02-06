@@ -1,0 +1,18 @@
+<a href="/">Home</a>
+
+<div class="current_story">
+<% @story_entries.each do |story_entry| %>
+<hr>
+<img src="story_entry.users.image_url" alt="">
+<p><%= story_entry.users.username %> :-   <%= story_entries.body %></p>
+<% end %>
+</div>
+
+<div class="new_entry">
+<form action="/story_entries" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="story_id" value="<%= @story_entry.id %>">
+  <textarea name="body" rows="5" cols="100"></textarea>
+  <button>Enter</button>
+</form>
+</div>

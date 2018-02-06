@@ -14,19 +14,19 @@ Rails.application.routes.draw do
 
   #mia route end
   #wally
-  #get '/stories/:id', to: 'stories#show' 
+  #get '/stories/:id', to: 'stories#show'
 
 
 
 
   #get '/', to: 'pages#home'
-  
+
 
   #
   #get '/login', to: 'session#new'
   #post '/session', to: 'session#create'
-  
-  
+
+
 
 
   resources :banana_transactions

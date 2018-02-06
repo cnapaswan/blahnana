@@ -1,4 +1,8 @@
 class StoriesController < ApplicationController
+
+  def show
+  end
+
   def new
   end
 
@@ -11,6 +15,6 @@ class StoriesController < ApplicationController
     else
       redirect_to 'stories/new'
     end
-    
+
   end
 end

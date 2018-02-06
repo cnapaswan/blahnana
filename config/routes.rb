@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/', to: 'pages#show'
   get '/stories/new', to: 'stories#new'
   post '/stories', to: 'stories#create'
+  get '/buynana', to: 'buynanas#show'
 
   #mia route end
   #wally

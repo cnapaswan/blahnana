@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   post '/stories', to: 'stories#create'
   get '/buynana', to: 'buynanas#show'
 
+
   #mia route end
   #wally
   #get '/stories/:id', to: 'stories#show'
@@ -29,7 +30,7 @@ Rails.application.routes.draw do
 
 
 
-
+  resources :charges
   resources :banana_transactions
   resources :story_entries
   resources :users

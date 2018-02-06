@@ -1,9 +1,9 @@
 <a href="/">Home</a>
 
 <div>
-  
+
   <h1><%= @story.title%></h1>
-  
+
 </div>
 
 
@@ -37,17 +37,19 @@
   </form>
 </div>
 
-<script type="text/javascript">
-  var banana = document.querySelector('.banana');
+<script>
 
-  banana.addEventListener('click', function(event) {
-    var bananaN = event.target.closest('.project_details')
-    var bananaCount = bananaN.querySelector('.countHearts');
-    var bananaGive = document.querySelector('.countBananas_user')
-    
-    if (bananaGive.textContent > 0){
-      bananaCount.textContent++;
-      heartGive.textContent--;
-    }
-  })
+var options = {
+  url: '/api/all',
+  method: 'get'
+}
+
+$.ajax(options).done(function(response){
+
+console.log(response)
+
+
+})
+
+
 </script>

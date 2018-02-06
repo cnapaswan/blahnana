@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
@@ -49,3 +50,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Added at 2018-02-06 10:25:22 +1100 by jen:
+#bundle add stripe to install and add stripe to gem file to make stripe gem available when pushed up
+gem "stripe", "~> 3.9"

@@ -1,0 +1,156 @@
+/*layout*/
+body {
+  background-color: rgb(255,180,70);
+}
+
+.top-nav {
+  display: flex;
+  width: 100%;
+  height: 40px;
+  padding: 4px 10px;
+  margin: 10px 0;
+  align-content: center;
+  justify-content: flex-end;
+}
+
+.user-panel-head {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-elem-group {
+  margin: 0 20px 0 0;
+
+}
+
+.username, .banana-status, .user-image, .login-out, .banana-status>a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.username {
+  width: auto;
+  color: black;
+
+}
+
+.banana-status {
+  width: auto;
+}
+
+.banana-status>a {
+/*   display: flex;
+justify-content: center;
+align-items: center; */
+  flex-direction: row;
+  width: 100%;
+}
+img.banana-icon {
+  width: 32px;
+  height: 32px
+}
+
+img.hash-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.bnn-balance {
+  font-size: 1em;
+}
+
+.user-icon {
+  width: 32px;
+}
+
+.user-icon>img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px black solid;
+}
+
+.login-out {
+  padding: 0 10px;
+  font-size: 1em;
+}
+
+footer {
+  text-align: center;
+  color: black;
+  font-size: 0.8em;
+  padding: 30px 0;
+}
+/*end of layout*/
+/*start homepage*/
+.banner {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;  
+
+}
+
+.banner>h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 5em;
+  padding: 5% 0;
+}
+
+.banner>p {
+  font-size: 2em;
+}
+
+.new-story {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.new-story-btn {
+  width: 20%;
+  padding: 20px;
+  border-radius: 50px;
+  background-color: black;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: rgb(255,180,70);
+}
+
+.invite {
+  margin: 20px 0 0;
+  font-size: 1.5em;
+  font-weight: 400;
+  text-align: center;
+}
+
+
+.stories-container {
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 70%;
+  padding: 100px 0;
+  margin: 0 auto;
+
+}
+
+.story {
+  width: 26%;
+  margin: 0 0 50px;
+}
+
+.story>a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

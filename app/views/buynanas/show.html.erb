@@ -6,6 +6,7 @@
     <span>X<%= product.item_count %></span>
     <span>=$<%= product.price %></span>
   <%= form_tag charges_path do %>
+  <input type="hidden" name="price" value="<%= product.price %>">
     <article>
       <% if flash[:error].present? %>
         <div id="error_explanation">
@@ -15,7 +16,7 @@
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
       data-description="A month's subscription"
-      data-amount="<% @product.price %>"
+      data-amount="<%= product.price %>"
       data-locale="auto">
     </script>
   <% end %>

@@ -2,7 +2,8 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
-    @story_entries = @story.story_entries
+    # @story_entries = @story.story_entries
+    @story_entries = StoryEntry.where(story_id: params[:id])
 
   end
 

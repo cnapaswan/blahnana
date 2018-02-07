@@ -28,7 +28,7 @@
 <% end %> <!--end of current_story-->
 </div>
 
-<% if @story_entries.last.user_id !=  current_user.id %>
+<% if @story_entries.last.user_id != current_user.id %>
 
 <div class="new_entry ">
   <form action="/api/create" method="post">

@@ -47,7 +47,7 @@
   $('#story').submit(function(event){
     event.preventDefault();
 
-    var formData = new FormData($('#story'));
+    var formData = new FormData($('#story')).serialize();
     var options = {
       url: '/api/stories',
       method: 'post',

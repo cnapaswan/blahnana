@@ -14,7 +14,7 @@ class StoriesController < ApplicationController
     if story.save 
       render json: story
     else
-      render json: {error: "erroris here"}
+      render json: {error: "error is here"}
     end
   end
 

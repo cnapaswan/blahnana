@@ -34,7 +34,6 @@ body {
 .username {
   width: auto;
   color: black;
-
 }
 
 .banana-status {
@@ -161,6 +160,62 @@ footer {
   background-color: red;
 }
 
+/*homepage end*/
+/*user page start*/
+
+.user-body {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.username-image {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.username-image>h1 {
+  font-family: 'Fredoka One', cursive;
+  font-size: 5em;
+  padding: 5% 0;
+  text-align: center;
+}
+
+.username-image >img {
+  width: 50%;
+  align-self: center;
+}
+
+.user-info {
+  width: 50%;
+  padding-top: 15%;
+  font-size: 2em
+}
+
+.usr-attr {
+  font-family: 'Fredoka One', cursive;
+  font-size: 2em;
+  padding-right: 30px;
+}
+
+img.banana-icon-64 {
+  width: 2em;
+  height: 2em;
+  margin-right: 30px;
+}
+
+.each-info, .each-info>a {
+  display: flex;
+  align-items: center;
+  padding: 5px 0 30px 0;
+}
+
+
+
+/*user page end*/
 /*story page*/
 .hide {
   display: none;

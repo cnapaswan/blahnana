@@ -156,6 +156,11 @@ footer {
   flex-direction: column;
 }
 
+.temp-story-con {
+  width: 100%;
+  background-color: red;
+}
+
 /*story page*/
 .hide {
   display: none;

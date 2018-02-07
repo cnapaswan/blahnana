@@ -1,44 +1,32 @@
 Rails.application.routes.draw do
-
-  #mia route start
+  
+  #homepage
+  get '/', to: 'pages#show'
+  #user_session
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
-
+  #user_database
   get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show'
-  get '/', to: 'pages#show'
-  get '/stories/new', to: 'stories#new'
-  post '/stories', to: 'stories#create'
-  get '/buynana', to: 'buynanas#show'
-  post 'stories_entries', to: 'stories_entries#create'
-
+  #story_database
+  post '/api/stories', to: 'stories#api_create'
+  
+  #stories_entries_database
+  post '/stories_entries', to: 'stories_entries#create'
   post '/api/create', to: 'story_entries#api_create'
   get '/api/all', to: 'story_entries#api_all'
-  # get '/pokemons/play', to: 'pokemons#play'
-  
-
-  #mia route end
-  #wally
-  #get '/stories/:id', to: 'stories#show'
-
-
-
-
-  #get '/', to: 'pages#home'
-
-
-  #
-  #get '/login', to: 'session#new'
-  #post '/session', to: 'session#create'
-
-
+  #banana_transactions_database
+  post '/give_banana', to: 'banana_transactions#create'
+  #sellbanana_landing_page
+  get '/buynana', to: 'buynanas#show'
+  #error
+  get '/oops', to: 'pages#oops'
 
   resources :charges
   resources :banana_transactions
   resources :story_entries
   resources :users
   resources :stories
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

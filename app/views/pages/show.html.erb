@@ -1,25 +1,74 @@
 <div class="banner">
-  <a class="logo" href="/">
-    <h1 class="hover_here">Blahnana</h1>
-  </a>
+  <p>welcome to... </p> 
+  <h1>B l a h n a n a</h1>
+  <p>
+    a creative community for you to blah bits and pieces into stories. 
+  </p>
 </div>
 
-<div class="">
-  <a class="hover_here" href="/stories/new">Start a new story</a>
+<div class="new-story">
+  <button class="new-story-btn">
+    Start a new story
+  </button>
 </div>
 
+<div class="new-story-form hide">
+  <form action="/api/stories" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <label for="">Title</label>
+    <input class="title_ipt" type="text" name="title">
+    <label for="">Image Url</label>
+    <input class="image_url_ipt" type="text" name="image_url">
+    <button class="create-btn">create</button>
+  </form> 
+</div>
+
+<h1 class="invite">make these stories more awesome ? go write your twist !</h1>
 
 
-<div class="stories_container">
+
+<div class="stories-container">
   <% @stories.each do |story| %>
   <div class="story">
     <a href="/stories/<%=story.id%>">
       <%= story.title%>
-    </a>
-  </div>
-    <a href="/stories/<%=story.id%>">
       <img src="<%= story.image_url%>" alt="">
     </a>
+  </div><!--end of story (ooh snap)-->
   <%end%>
-
 </div>
+
+<div class="temp-story-con">
+  
+</div>
+
+
+
+<script type="text/javascript">
+  
+  $('.new-story-btn').click(function(){
+    $('.new-story-form').removeClass('hide')
+  })
+
+  $('.create-btn').click(function(event){
+    event.preventDefault();
+
+    var options = {
+      url: '/api/stories',
+      method: 'post',
+      data: { title: $('.title_ipt').val(),
+              image_url: $('.image_url_ipt').val()
+            }
+    }
+    
+    $.ajax(options).done(function(res){
+        $tempcon = $('.temp-story-con')
+        $newTitle = $('<a>').text(res.title)
+        $newImg = $('<img>').attr('src',res.image_url)
+        $tempcon.append($newTitle)
+        $tempcon.append($newImg)
+      })
+    })
+    
+
+</script>

@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   get '/users/:id', to: 'users#show'
   #story_database
-  post '/stories', to: 'stories#create'
+  post '/api/stories', to: 'stories#api_create'
   
   #stories_entries_database
   post '/stories_entries', to: 'stories_entries#create'
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   post '/give_banana', to: 'banana_transactions#create'
   #sellbanana_landing_page
   get '/buynana', to: 'buynanas#show'
+  #error
+  get '/oops', to: 'pages#oops'
 
   resources :charges
   resources :banana_transactions

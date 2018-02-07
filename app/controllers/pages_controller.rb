@@ -3,6 +3,8 @@ class PagesController < ApplicationController
   @stories = Story.all 
   end
 
+  def oops
+  end
 
 
 end

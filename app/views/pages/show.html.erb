@@ -13,13 +13,13 @@
 </div>
 
 <div class="new-story-form hide">
-  <form action="/stories" method="post">
+  <form action="/api/stories" method="post">
     <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
     <label for="">Title</label>
-    <input type="text" name="title">
+    <input class="title_ipt" type="text" name="title">
     <label for="">Image Url</label>
-    <input type="text" name="image_url">
-    <button>create</button>
+    <input class="image_url_ipt" type="text" name="image_url">
+    <button class="create-btn">create</button>
   </form> 
 </div>
 
@@ -38,14 +38,37 @@
   <%end%>
 </div>
 
+<div class="temp-story-con">
+  
+</div>
+
 
 
 <script type="text/javascript">
   
   $('.new-story-btn').click(function(){
-    console.log("im clicked")
     $('.new-story-form').removeClass('hide')
-
   })
+
+  $('.create-btn').click(function(event){
+    event.preventDefault();
+
+    var options = {
+      url: '/api/stories',
+      method: 'post',
+      data: { title: $('.title_ipt').val(),
+              image_url: $('.image_url_ipt').val()
+            }
+    }
+    
+    $.ajax(options).done(function(res){
+        $tempcon = $('.temp-story-con')
+        $newTitle = $('<a>').text(res.title)
+        $newImg = $('<img>').attr('src',res.image_url)
+        $tempcon.append($newTitle)
+        $tempcon.append($newImg)
+      })
+    })
+    
 
 </script>

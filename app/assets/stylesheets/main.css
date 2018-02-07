@@ -106,7 +106,7 @@ footer {
   font-size: 2em;
 }
 
-.new-story {
+.new-story, .new-story-form {
   width: 100%;
   height: 200px;
   display: flex;
@@ -144,7 +144,7 @@ footer {
 
 }
 
-.story {
+.story-con {
   width: 26%;
   margin: 0 0 50px;
 }
@@ -154,6 +154,11 @@ footer {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+.temp-story-con {
+  width: 100%;
+  background-color: red;
 }
 
 /*story page*/

@@ -7,22 +7,61 @@
 </div>
 
 <div class="new-story">
-  <div class="new-story-btn">
-    <a href="/stories/new">Start a new story</a>
-  </div>
+  <button class="new-story-btn">
+    Start a new story
+  </button>
+</div>
+
+<div class="new-story-form hide">
+  <form action="/api/stories" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <label for="">Title</label>
+    <input class="title_ipt" type="text" name="title">
+    <label for="">Image Url</label>
+    <input class="image_url_ipt" type="text" name="image_url">
+    <button class="create-btn">create</button>
+  </form> 
 </div>
 
 <h1 class="invite">make these stories more awesome ? go write your twist !</h1>
 
-
-
 <div class="stories-container">
   <% @stories.each do |story| %>
-  <div class="story">
+  <div class="story-con">
     <a href="/stories/<%=story.id%>">
       <%= story.title%>
       <img src="<%= story.image_url%>" alt="">
     </a>
-  </div><!--end of story (ooh snap)-->
+  </div>
   <%end%>
 </div>
+
+<script type="text/javascript">
+  
+  $('.new-story-btn').click(function(){
+    $('.new-story-form').removeClass('hide')
+  })
+
+  $('.create-btn').click(function(event){
+    event.preventDefault();
+
+    var options = {
+      url: '/api/stories',
+      method: 'post',
+      data: { title: $('.title_ipt').val(),
+              image_url: $('.image_url_ipt').val()
+            }
+    }
+    
+    $.ajax(options).done(function(res){
+        $storiesCon = $('.stories-container')
+        $storyCon = $('<div>').attr('class','story-con')
+        $storyLink = $('<a>').attr('href',"/stories/"+res.id).text(res.title)
+        $newImg = $('<img>').attr('src',res.image_url)
+        $storyLink.append($newImg)
+        $storyCon.append($storyLink)
+        $storiesCon.append($storyCon)
+    })
+  })
+    
+</script>

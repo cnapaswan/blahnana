@@ -25,24 +25,16 @@
 
 <h1 class="invite">make these stories more awesome ? go write your twist !</h1>
 
-
-
 <div class="stories-container">
   <% @stories.each do |story| %>
-  <div class="story">
+  <div class="story-con">
     <a href="/stories/<%=story.id%>">
       <%= story.title%>
       <img src="<%= story.image_url%>" alt="">
     </a>
-  </div><!--end of story (ooh snap)-->
+  </div>
   <%end%>
 </div>
-
-<div class="temp-story-con">
-  
-</div>
-
-
 
 <script type="text/javascript">
   
@@ -62,13 +54,14 @@
     }
     
     $.ajax(options).done(function(res){
-        $tempcon = $('.temp-story-con')
-        $newTitle = $('<a>').text(res.title)
+        $storiesCon = $('.stories-container')
+        $storyCon = $('<div>').attr('class','story-con')
+        $storyLink = $('<a>').attr('href',"/stories/"+res.id).text(res.title)
         $newImg = $('<img>').attr('src',res.image_url)
-        $tempcon.append($newTitle)
-        $tempcon.append($newImg)
-      })
+        $storyLink.append($newImg)
+        $storyCon.append($storyLink)
+        $storiesCon.append($storyCon)
     })
+  })
     
-
 </script>

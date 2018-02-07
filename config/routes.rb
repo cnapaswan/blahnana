@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :products
+  resources :costs
   #homepage
   get '/', to: 'pages#show'
   #user_session

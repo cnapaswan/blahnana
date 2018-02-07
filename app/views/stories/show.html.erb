@@ -70,9 +70,8 @@ $submitBtn.click(function(){
 
   $(".new_entry").removeClass("hide");
   if (response[response.length-1].user_id === <%= current_user.id %>){
-    alert ("Please wait for someone else to write")
-     $(".new_entry").addClass("hide");
-   }
+   $(".new_entry").addClass("hide");
+  }
 })
 
 </script>

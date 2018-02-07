@@ -11,11 +11,10 @@ class StoriesController < ApplicationController
     story.title = params[:title]
     story.image_url = params[:image_url]
     story.story_img = params[:img_file]
-    byebug
     if story.save 
       render json: story
     else
-      redirect_to '/oops'
+      render json: {error: "error is here"}
     end
   end
 

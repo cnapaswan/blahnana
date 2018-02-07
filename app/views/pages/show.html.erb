@@ -47,7 +47,7 @@
   $('#story').submit(function(event){
     event.preventDefault();
 
-    var formData = new FormData(this);
+    var formData = new FormData($('#story'));
     var options = {
       url: '/api/stories',
       method: 'post',
@@ -59,8 +59,8 @@
         $storiesCon = $('.stories-container')
         $storyCon = $('<div>').attr('class','story-con')
         $storyLink = $('<a>').attr('href',"/stories/"+res.id).text(res.title)
-        $newImg = $('<img>').attr('src',res.image_url)
-        $storyLink.append($newImg)
+        // $newImg = $('<img>').attr('src',res.image_url)
+        // $storyLink.append($newImg)
         $storyCon.append($storyLink)
         $storiesCon.append($storyCon)
     })

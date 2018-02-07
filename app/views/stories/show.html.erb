@@ -28,18 +28,18 @@
 <% end %> <!--end of current_story-->
 </div>
 
-<% if @story_entries.last.user_id != current_user.id %>
 
-<div class="new_entry ">
-  <form action="/api/create" method="post">
-  <!-- <form action="/story_entries" method="post"> -->
-    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-     <input class="story_id_ipt" type="hidden" name="story_id" value="<%= @story.id %>">
-    <input class="current-user_id_ipt" type="hidden" name="user_id" value="<%= current_user.id %>">
-    <textarea class="text_body-ipt" name="body" rows="5" cols="100"></textarea>
-    <button class="submit">Enter</button>
-  </form>
-</div>
+<% if (current_user && !@story_entries.present?()) || (@story_entries.last.user_id !=  current_user.id) %>
+  <div class="new_entry ">
+    <form action="/api/create" method="post">
+    <!-- <form action="/story_entries" method="post"> -->
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input class="story_id_ipt" type="hidden" name="story_id" value="<%= @story.id %>">
+      <input class="current-user_id_ipt" type="hidden" name="user_id" value="<%= current_user.id %>">
+      <textarea class="text_body-ipt" name="body" rows="5" cols="100"></textarea>
+      <button class="submit">Enter</button>
+    </form>
+  </div>
 <% end %>
 
 <script>

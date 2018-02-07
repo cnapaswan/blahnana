@@ -1,5 +1,10 @@
 class StoryEntriesController < ApplicationController
 
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+
   # def create
   #   @story_entries = StoryEntry.new
   #   @story_entries.story_id = params[:story_id]
@@ -32,6 +37,7 @@ class StoryEntriesController < ApplicationController
 
 
   def api_all
+    redirect_to'/login' unless current_user.present?()
     @story_entries = StoryEntry.all
     render json: @story_entries
   end

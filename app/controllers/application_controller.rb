@@ -6,4 +6,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+
+  # def logged_in?
+  #     !!current_user
+  # end
+
+
 end

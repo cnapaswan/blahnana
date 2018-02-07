@@ -28,52 +28,58 @@
 <% end %> <!--end of current_story-->
 </div>
 
+<% if @story_entries.last.user_id !=  current_user.id %>
 
-<div class="new_entry hide">
+<div class="new_entry ">
   <form action="/api/create" method="post">
   <!-- <form action="/story_entries" method="post"> -->
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-     <input type="hidden" name="story_id" value="<%= @story.id %>">
-    <input type="hidden" name="user_id" value="<%= current_user.id %>">
-    <textarea name="body" rows="5" cols="100"></textarea>
+     <input class="story_id_ipt" type="hidden" name="story_id" value="<%= @story.id %>">
+    <input class="current-user_id_ipt" type="hidden" name="user_id" value="<%= current_user.id %>">
+    <textarea class="text_body-ipt" name="body" rows="5" cols="100"></textarea>
     <button class="submit">Enter</button>
   </form>
 </div>
+<% end %>
 
 <script>
 
-var options = {
-  url: '/api/all',
-  method: 'get'
-}
 
-$.ajax(options).done(function(response){
-console.log(response[response.length-1])
-console.log("response[response.length-1].user_id = "+response[response.length-1].user_id)
-console.log("current_user.id = "+ <%= current_user.id %>)
-debugger;
-
-var $submitBtn = $('.submit')
-
-$submitBtn.click(function(){
+$('.submit').click(function(event){
   event.preventDefault();
-  var $container = $('.current_story')
-  var $showUserId = $('<span>').text(response.user_id)
-  var $showUserImg = $('<img>').attr('src', <%= current_user.image_url %>)
-  var $showUserName = $('<span>').text(<%= current_user.username %>)
-  var $showUserBnn = $('<span>').text(<%= current_user.banana %>)
-  var $showStoryEntryBody = $('<p>').text(response.body)
-  $container.append($showUserId)
-  $container.append($showUserImg)
-  $container.append($showUserName)
-  $container.append($showUserBnn)
-  $container.append($showStoryEntryBody)
 
-
-  $(".new_entry").removeClass("hide");
-  if (response[response.length-1].user_id === <%= current_user.id %>){
-   $(".new_entry").addClass("hide");
+  var options = {
+    url: '/api/stories_entries',
+    method: 'post',
+    data: { story_id: $('.story_id_ipt').val(),
+            user_id: $('.current-user_id_ipt').val(),
+            body: $('.text_body-ipt').val()
+    }
   }
+
+  $.ajax(options).done(function(response){
+    console.log(response)
+    console.log("response.user_id = "+response.user_id)
+    console.log("current_user.id = "+ <%= current_user.id %> )
+
+    var $container = $('.current_story')
+    var $line = $('<hr>')
+    var $showUserId = $('<span>').text(response.user_id)
+    var $iconBox = $('<div>').attr('class','user-icon')
+    var $showUserImg = $('<img>').attr('src', "<%= current_user.image_url %>" )
+    var $showUserName = $('<span>').text( "<%= current_user.username %> ")
+    var $showUserBnn = $('<span>').text( "<%= current_user.banana %> ")
+    var $showStoryEntryBody = $('<p>').text(response.body)
+    $container.append($line)
+    $container.append($showUserId)
+    $iconBox.append($showUserImg)
+    $container.append($iconBox)
+    $container.append($showUserName)
+    $container.append($showUserBnn)
+    $container.append($showStoryEntryBody)
+
+   $(".new_entry").addClass("hide");
+  })
 })
 
 </script>

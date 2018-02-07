@@ -13,12 +13,14 @@
 </div>
 
 <div class="new-story-form hide">
-  <form action="/api/stories" method="post">
+  <form id="story" action="/api/stories" method="post">
     <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
     <label for="">Title</label>
     <input class="title_ipt" type="text" name="title">
     <label for="">Image Url</label>
     <input class="image_url_ipt" type="text" name="image_url">
+    <label for="">Img upload</label>
+    <input class="img_file" type="file" name="img_file">
     <button class="create-btn">create</button>
   </form> 
 </div>
@@ -42,23 +44,23 @@
     $('.new-story-form').removeClass('hide')
   })
 
-  $('.create-btn').click(function(event){
+  $('#story').submit(function(event){
     event.preventDefault();
 
+    var formData = new FormData($('#story')).serialize();
     var options = {
       url: '/api/stories',
       method: 'post',
-      data: { title: $('.title_ipt').val(),
-              image_url: $('.image_url_ipt').val()
-            }
+      data: formData,
+      processData: false
     }
-    
+
     $.ajax(options).done(function(res){
         $storiesCon = $('.stories-container')
         $storyCon = $('<div>').attr('class','story-con')
         $storyLink = $('<a>').attr('href',"/stories/"+res.id).text(res.title)
-        $newImg = $('<img>').attr('src',res.image_url)
-        $storyLink.append($newImg)
+        // $newImg = $('<img>').attr('src',res.image_url)
+        // $storyLink.append($newImg)
         $storyCon.append($storyLink)
         $storiesCon.append($storyCon)
     })

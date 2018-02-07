@@ -7,13 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 Product.destroy_all
 
-=begin
-Product.create([{product_item:"type1", price:0.99, item_count:10},
-	{product_item:"type2", price:2.99, item_count:35},
-	{product_item:"type3", price:4.99, item_count:60}])
-
-=end
-
 p4 = Product.new
 p4.product_item="type1"
 p4.price=0.99

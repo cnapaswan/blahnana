@@ -17,10 +17,10 @@ class BananaTransactionsController < ApplicationController
     receiver.save
     giver.banana-= 1
     giver.save
-    redirect_to request.referrer 
+    redirect_to request.referrer
     else
       redirect_to '/buynana'
-    end  
-  end 
-   
+    end
+  end
+
 end

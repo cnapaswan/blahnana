@@ -1,5 +1,5 @@
 class BananaTransactionsController < ApplicationController
-  def create
+  def api_create_give_bnn
     banana = BananaTransaction.new
     banana.source_user_id = params[:source_user_id]
     banana.target_user_id = params[:target_user_id]
@@ -12,7 +12,7 @@ class BananaTransactionsController < ApplicationController
   def give_take
     receiver = User.find(params[:target_user_id])
     giver = User.find(params[:source_user_id])
-    if giver.banana > 0
+    if giver.banana > 0 && giver != receiver
     receiver.banana+= 1
     receiver.save
     giver.banana-= 1

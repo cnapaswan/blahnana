@@ -5,17 +5,7 @@ class StoryEntriesController < ApplicationController
   end
   helper_method :current_user
 
-  # def create
-  #   @story_entries = StoryEntry.new
-  #   @story_entries.story_id = params[:story_id]
-  #   @story_entries.user_id = params[:user_id]
-  #   @story_entries.body = params[:body]
-  #   if @story_entries.save
-  #     redirect_to "/"
-  #   end
-  # end
-
-  def api_create
+  def api_create_story_entry
     story_entries = StoryEntry.new
     story_entries.story_id = params[:story_id]
     story_entries.user_id = params[:user_id]
@@ -26,13 +16,6 @@ class StoryEntriesController < ApplicationController
     else
       redirect_to '/oops'
     end
-    # if @story_entries.save
-    #   # render json: @story_entries
-    #   redirect_to "/stories/#{params[:story_id]}"
-    #
-    # else
-    #   raise "booyah!"
-    # end
   end
 
 

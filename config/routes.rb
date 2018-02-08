@@ -22,8 +22,7 @@ Rails.application.routes.draw do
   # post '/api/create', to: 'story_entries#api_create'
   get '/api/all', to: 'story_entries#api_all'
   #banana_transactions_database
-  # post '/give_banana', to: 'banana_transactions#create'
-  post '/api/give_banana', to: 'banana_transactions#api_create_give_bnn'
+  post '/give_banana', to: 'banana_transactions#give_banana'
   #sellbanana_landing_page
   get '/buynana', to: 'buynanas#show'
   #error

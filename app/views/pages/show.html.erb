@@ -29,11 +29,11 @@
   <% @stories.each do |story| %>
     <div class="story-con">
       <a href="/stories/<%=story.id%>">
-        <%= story.title%>
+        <span><%= story.title%></span>
         <img src="<%= story.story_img%>" alt="">
       </a>
-    </div>
-    <% if admin? %>
+
+      <% if admin? %>
       <div class="delete-story">
         <form class="" action="/delete/story" method="post">
           <input type="hidden" name="_method" value="delete">
@@ -44,10 +44,10 @@
           </button>
         </form>
       </div>
-    <% end %>
-    
+    <% end %><!--end of if admin?-->
+    </div> <!--end of story-con-->
   <%end%>
-</div>
+</div><!--end of stories-container-->
 
 <script type="text/javascript">
 

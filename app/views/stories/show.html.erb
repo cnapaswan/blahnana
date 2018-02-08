@@ -1,30 +1,31 @@
-
-<a href="/">Home</a>
-
-<div>
-
-  <h1><%= @story.title%></h1>
-
-</div>
-
+<h1 class="story-head"><%= @story.title%></h1>
 
 <div class="current_story">
-
-
-<% @story_entries.each do |story_entry| %>
+  <% @story_entries.each do |story_entry| %>
   <div class="story-entry">
-      <hr>
-      <input type="hidden" value="<%= story_entry.id %>">
-      <span class="entry-user-id"><%= story_entry.user_id%></span>
-      <div class="user-icon">
-        <img src="<%= story_entry.user.image_url%>" alt="">
-      </div>
-      <span><%= story_entry.user.username%></span>
-      <span class="entry_user_bnn">
-        <%= story_entry.user.banana %>
-      </span>
-      <p><%= story_entry.body%></p>
+      <input type="hidden" value="<%= story_entry.id %>">  
+      <div class="user-panel">
+        <div class="user-panel-above">
+          <!--<span class="entry-user-id"><#%= story_entry.user_id%></span> -->
+          <div class="user-icon">
+            <img src="<%= story_entry.user.image_url%>" alt="">
+          </div>
+          <span class="username"><%= story_entry.user.username%></span>
+        </div><!--end of user panel above-->
 
+        <div class="user-panel-below">
+          <img class="banana-icon" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon">
+          <div class="hash-icon">
+            <%= image_tag "Hash_Mark.png" %>
+          </div>
+          <span class="entry_user_bnn">
+            <%= story_entry.user.banana %>
+          </span>
+        </div><!--end of user panel below-->
+      </div><!--end of user panel-->
+      <div class="blah">
+        <p><%= story_entry.body%></p>
+      </div>
 
     <% if current_user %>
       <form action="/give_banana" method="post">
@@ -36,15 +37,12 @@
       </form>
     <% end %>
   </div> <!--end of story-entry-->
-
-<% end %> <!--end of each do-->
-
+  <% end %> <!--end of each do-->
 </div><!--end of current_story-->
 
 
 
 <% if current_user %>
-
   <% if (current_user && !@story_entries.present?()) || (@story_entries.last.user_id !=  current_user.id) %>
   <div class = "col-md-6">
       <div class="progress">
@@ -69,13 +67,16 @@
 <% end %>
 
 
-<% if (@story_entries.last.present?()) && (@story_entries.last.user_id ==  current_user.id) %>
+<% if current_user.present?() &&
+      @story_entries.last.present?() &&
+      @story_entries.last.user_id == current_user.id %>
 
   <div class="ask-to-wait">
     Hoi, someone has been typing hard.
     wait a little! we are finding  someone to write after your last entry
   </div>
-<%end%>
+
+<% end %>
 
 
 

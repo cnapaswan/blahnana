@@ -1,4 +1,7 @@
-
+/*universal class*/
+.hide {
+  display: none;
+}
 /*layout*/
 body {
   background-color: rgb(255,180,70);
@@ -127,12 +130,17 @@ footer {
   font-size: 1.2em;
   font-weight: 600;
   color: rgb(255,180,70);
+  border: black;
+}
+
+.new-story-btn:hover {
+  color: #F67A00;
 }
 
 .invite {
   margin: 20px 0 0;
   font-size: 1.5em;
-  font-weight: 400;
+  font-weight: 600;
   text-align: center;
 }
 
@@ -149,21 +157,62 @@ footer {
 }
 
 .story-con {
+  display: flex;
+  flex-direction: column;
   width: 26%;
   margin: 0 0 50px;
+  padding: 3%;
   background-color: black;
+  box-shadow: 1px 3px 15px 0px rgba(0,0,0,0.75);
 }
 
-.story>a{
+
+.story-con>a{
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
 }
 
-.temp-story-con {
-  width: 100%;
-  background-color: red;
+.story-con>a>span{
+  text-align: center;
+  color: white;
+  padding: 0 0 10%;
+  font-size: 2rem;
+}
+
+.story-con>a>span:hover {
+  text-decoration: none;
+  color: #F67A00;
+}
+
+.delete-story {
+  align-self: center;
+  padding-top: 10%;
+}
+
+.new-story-form>form {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  background-color: black;
+  padding: 3%;
+  border-radius: 15px;
+  color: white;
+}
+
+.title_ipt {
+  margin-right: 8%;
+  color: #F67A00;
+  font-weight: 500;
+}
+
+.img-file {
+  display: inline-block;
+}
+
+.create-btn {
+  background-color: #F67A00;
+  border: black;
 }
 
 /*homepage end*/
@@ -218,11 +267,115 @@ img.banana-icon-64 {
   align-items: center;
   padding: 5px 0 30px 0;
 }
+/*user page ends*/
+/*story page starts*/
 
-
-
-/*user page end*/
-/*story page*/
-.hide {
-  display: none;
+.story-head {
+  font-family: 'Fredoka One', cursive;
+  font-size: 5em;
+  margin: 5% 2%;
 }
+
+.current_story {
+  width: 80%;
+  background-color: rgba(255,255,255, 0.4);
+  margin: 2% auto;
+  border-radius: 15px;
+  padding: 2%;
+}
+
+.story-entry {
+  width: 95%;
+  background-color: rgba(255,255,255, 0.2);
+  padding: 2%;
+  margin: 2% auto;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+
+}
+.user-panel {
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  padding: 1%;
+  background-color: black;
+}
+.user-panel-above, .user-panel-below {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  display: flex;
+  align-items: center;
+  padding: 2%;
+  color: white;
+
+}
+
+.user-panel-below {
+  margin-top: 5%;
+}
+
+
+.user-panel-above>.username, .entry_user_bnn {
+  font-weight: 800;
+  font-size: 1em;
+  color: white;
+}
+.user-icon>img {
+  border: 2px rgb(255,180,70) solid;
+}
+.user-panel-below>.hash-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.blah {
+  width: 75%;
+}
+
+/*story page ends*/
+/*buynana starts*/
+
+.bnn-reload {
+  font-family: 'Fredoka One', cursive;
+  font-size: 4em;
+  text-align: center;
+  padding: 8% 0;
+}
+
+.bnn-con {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  width: 70%;
+  background-color: rgba(255,255,255, 0.3);
+  padding: 2%;
+  margin: 5% auto;
+  border-radius: 15px;
+}
+
+.bnn {
+  width: 15%;
+  margin: 2% 5% 2% 5%;
+}
+
+.bnn-con>span {
+  font-family: 'Fredoka One', cursive;
+  font-size: 5em;
+  margin-right: 4%;
+}
+
+.bnn-con>span.x {
+  font-size: 3em;
+  margin-right: 4%;
+}
+
+.pay-btn {
+  position: absolute;
+  top: 100px;
+  right: 75px;
+}
+/*buynana end*/
+

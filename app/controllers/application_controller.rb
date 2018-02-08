@@ -6,10 +6,13 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-
-  # def logged_in?
-  #     !!current_user
-  # end
-
+  def admin?
+    if current_user.email == "mjw@ga.co"
+      return true
+    else
+      return false
+    end
+  end
+  helper_method :admin?
 
 end

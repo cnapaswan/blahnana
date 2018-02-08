@@ -1,3 +1,10 @@
+<head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
 <a href="/">Home</a>
 
 <div>
@@ -41,24 +48,44 @@
 
 
 <% if (current_user && !@story_entries.present?()) || (@story_entries.last.user_id !=  current_user.id) %>
-  <div class="new_entry ">
+<div class = "col-md-6"> 
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+            <span class = "current-value">0%</span>
+        </div>
+    </div>
+  <div class="new_entry form-group">
     <form action="/api/stories_entries" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input class="story_id_ipt" type="hidden" name="story_id" value="<%= @story.id %>">
       <input class="current-user_id_ipt" type="hidden" name="user_id" value="<%= current_user.id %>">
-      <textarea class="text_body-ipt" name="body" rows="5" cols="100"></textarea>
-      <button class="submit">Enter</button>
+      <textarea class="text_body-ipt form-control" name="body" rows="5" cols="100" maxlength="200" placeholder="Enter a text"></textarea>
+      <button class="submit count btn btn-primary">Enter</button>
     </form>
   </div>
 <% end %>
+</div>
  
 <% if @story_entries.last.user_id ==  current_user.id %>
   <div class="ask-to-wait">
     Hoi, someone has been typing hard. 
     wait a little! we are finding  someone to write after your last entry
   </div>
-<%end%>
-
+<#%end%>
+<!-- 
+original
+<div class = "col-md-6">        
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+            <span class = "current-value">0%</span>
+        </div>
+    </div>
+    <div class = "form-group">
+        <textarea class = "form-control" rows = "5" maxlength = "200" placeholder = "Enter a text"></textarea>
+    </div>
+    <div class = "count btn btn-primary">200</div>
+</div>
+-->
 
 
 
@@ -99,36 +126,40 @@ $('.submit').click(function(event){
     $container.append($showStoryEntryBody)
 
    $(".new_entry").addClass("hide");
+   $(".progress").remove();
   })
 })
 
+  jQuery(document).ready(function() {
+    
+    $('textarea').keyup(function() {
+        var box = $(this).val();
+        var main = box.length * 200;
+        var value = (main / 200);
+        var count = 0 + box.length;
+        var countP = count/2
+        var reverse_count = 200 - box.length;
+        
+        if(box.length >= 0){
+            $('.progress-bar').css('width', countP + '%');
+            $('.current-value').text(countP + '%');
+            $('.count').text(reverse_count);
+            
+            if (count >= 170 && count < 190){
+                $('.progress-bar').removeClass('progress-bar-danger').addClass('progress-bar-warning');
+            }
+            if (count > 150){
+                $('.progress-bar').removeClass('progress-bar-warning').addClass('progress-bar-danger');
+            }
+            if(count >= 0 && count < 150){
+                $('.progress-bar').removeClass('progress-bar-danger');
+                $('.progress-bar').removeClass('progress-bar-warning');         
+                $('.progress-bar').addClass('progress-bar-success')
+            }
+            
+        }
+        return false;
+    });
+});
 </script>
 
-
-
-
-<!-- 
-  i tried to do ajax on updating banana
-  but i can't
-
-
-$('.give-bnn-btn').click(function(event){
-  var options = {
-    url: '/api/give_banana',
-    method: 'post',
-    data: {
-      source_user_id: <%=current_user.id%>,
-      target_user_id: $('event.target').closest('.story-entry').find('.entry-user-id').val(),
-      story_entry_id: $('event.target').closest('.story-entry').find('input').val()
-    }
-  }
-
-  $.ajax(options).done(function(res){
-    console.log(res)
-    $test = $('<div>').val('im working')
-
-    $('.current_story').append($test)
-
-  })
-
-}) -->

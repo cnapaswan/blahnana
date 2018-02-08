@@ -8,6 +8,7 @@
 
 
 <div class="current_story">
+
   <% @story_entries.each do |story_entry| %>
   <hr>
   <span><%= story_entry.user_id%></span>
@@ -15,24 +16,27 @@
     <img src="<%= story_entry.user.image_url%>" alt="">
   </div>
   <span><%= story_entry.user.username%></span>
-  <span class="entry_user_bnn"><%= story_entry.user.banana %></span>
+  <span class="entry_user_bnn">
+    <%= story_entry.user.banana %></span>
   <p><%= story_entry.body%></p>
 
-  <form action="/give_banana" method="post">
+  <form action="/api/give_banana" method="post">
     <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
     <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
     <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
     <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
-    <button>&#x1F34C;</button>
+    <button class="give-bnn-btn"><img class="banana-icon give-bnn" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon"></button>
   </form>
-<% end %> <!--end of current_story-->
+
+ 
+  <% end %> <!--end of current_story-->
 </div>
+
 
 
 <% if (current_user && !@story_entries.present?()) || (@story_entries.last.user_id !=  current_user.id) %>
   <div class="new_entry ">
-    <form action="/api/create" method="post">
-    <!-- <form action="/story_entries" method="post"> -->
+    <form action="/api/stories_entries" method="post">
       <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
       <input class="story_id_ipt" type="hidden" name="story_id" value="<%= @story.id %>">
       <input class="current-user_id_ipt" type="hidden" name="user_id" value="<%= current_user.id %>">
@@ -41,8 +45,22 @@
     </form>
   </div>
 <% end %>
+<!-- 
+<%# if @story_entries.last.user_id ==  current_user.id %>
+  <div class="ask-to-wait">
+    Hoi, someone has been typing hard. 
+    wait a little! we are finding  someone to write after your last entry
+  </div>
+<#%end%>
+ -->
+
+
 
 <script>
+
+$('.give-bnn-btn').click(function(){
+  
+})
 
 
 $('.submit').click(function(event){

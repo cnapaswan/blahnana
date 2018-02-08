@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   #story_database
   post '/stories', to: 'stories#create'
   get '/api/stories', to: 'stories#api_show'
-
+  delete '/delete/story', to: 'stories#destroy'
   #stories_entries_database
   post '/api/stories_entries', to: 'story_entries#api_create_story_entry'
 

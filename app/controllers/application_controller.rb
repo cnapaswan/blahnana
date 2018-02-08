@@ -7,7 +7,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def admin?
-    if current_user.email == "mjw@ga.co"
+    current_user ||= User.find(session[:user_id]) if session[:user_id]
+    if current_user != nil && current_user.email == "mjw@ga.co"
       return true
     else
       return false

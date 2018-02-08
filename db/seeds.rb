@@ -22,5 +22,5 @@ p5.save
 p6 = Product.new
 p6.product_item="type3"
 p6.price=4.99
-p6.item_count=35
+p6.item_count=60
 p6.save

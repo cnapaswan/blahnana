@@ -1,3 +1,4 @@
+
 <a href="/">Home</a>
 
 <div>
@@ -9,66 +10,81 @@
 
 <div class="current_story">
 
-  <% @story_entries.each do |story_entry| %>
-  <hr>
-  <span><%= story_entry.user_id%></span>
-  <div class="user-icon">
-    <img src="<%= story_entry.user.image_url%>" alt="">
-  </div>
-  <span><%= story_entry.user.username%></span>
-  <span class="entry_user_bnn">
-    <%= story_entry.user.banana %></span>
-  <p><%= story_entry.body%></p>
 
-  <% if current_user %>
-    <form action="/api/give_banana" method="post">
-      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-      <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
-      <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
-      <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
-      <button class="give-bnn-btn"><img class="banana-icon give-bnn" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon"></button>
-    </form>
-  <% end %>
+<% @story_entries.each do |story_entry| %>
+  <div class="story-entry">
+      <hr>
+      <input type="hidden" value="<%= story_entry.id %>">
+      <span class="entry-user-id"><%= story_entry.user_id%></span>
+      <div class="user-icon">
+        <img src="<%= story_entry.user.image_url%>" alt="">
+      </div>
+      <span><%= story_entry.user.username%></span>
+      <span class="entry_user_bnn">
+        <%= story_entry.user.banana %>  
+      </span>
+      <p><%= story_entry.body%></p>
 
-  <% end %> <!--end of current_story-->
-</div>
+      
+    <% if current_user %>
+      <form action="/give_banana" method="post">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
+        <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
+        <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
+        <button class="give-bnn-btn"><img class="banana-icon give-bnn" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon"></button>
+      </form>
+    <% end %>
+  </div> <!--end of story-entry-->
+
+<% end %> <!--end of each do-->
+
+</div><!--end of current_story-->
+
 
 
 <% if current_user %>
+
   <% if (current_user && !@story_entries.present?()) || (@story_entries.last.user_id !=  current_user.id) %>
-    <div class="new_entry ">
+  <div class = "col-md-6"> 
+      <div class="progress">
+          <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+              <span class = "current-value">0%</span>
+          </div>
+      </div>
+
+
+     <div class="new_entry form-group">
       <form action="/api/stories_entries" method="post">
         <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
         <input class="story_id_ipt" type="hidden" name="story_id" value="<%= @story.id %>">
         <input class="current-user_id_ipt" type="hidden" name="user_id" value="<%= current_user.id %>">
-        <textarea class="text_body-ipt" name="body" rows="5" cols="100"></textarea>
-        <button class="submit">Enter</button>
+        <textarea class="text_body-ipt form-control" name="body" rows="5" cols="100" maxlength="200" placeholder="Enter a text"></textarea>
+        <button class="submit count btn btn-primary">Enter</button>
       </form>
     </div>
+   </div>
   <% end %>
+
 <% end %>
 
-<!--
-<%# if @story_entries.last.user_id ==  current_user.id %>
+ 
+<% if (@story_entries.last.present?()) && (@story_entries.last.user_id ==  current_user.id) %>
+
   <div class="ask-to-wait">
     Hoi, someone has been typing hard.
     wait a little! we are finding  someone to write after your last entry
   </div>
-<#%end%>
- -->
+<%end%>
+
+
 
 
 
 <script>
 
-$('.give-bnn-btn').click(function(){
-
-})
-
-
 $('.submit').click(function(event){
   event.preventDefault();
-
   var options = {
     url: '/api/stories_entries',
     method: 'post',
@@ -77,6 +93,7 @@ $('.submit').click(function(event){
             body: $('.text_body-ipt').val()
     }
   }
+
 
   <% if current_user %>
 
@@ -102,8 +119,41 @@ $('.submit').click(function(event){
       $container.append($showStoryEntryBody)
 
      $(".new_entry").addClass("hide");
+     $(".progress").hide();
     })
   <% end %>
+
 })
 
+jQuery(document).ready(function() {
+    
+  $('textarea').keyup(function() {
+      var box = $(this).val();
+      var main = box.length * 200;
+      var value = (main / 200);
+      var count = 0 + box.length;
+      var countP = count/2
+      var reverse_count = 200 - box.length;
+      
+      if(box.length >= 0){
+          $('.progress-bar').css('width', countP + '%');
+          $('.current-value').text(countP + '%');
+          $('.count').text(reverse_count);
+          
+          if (count >= 170 && count < 190){
+              $('.progress-bar').removeClass('progress-bar-danger').addClass('progress-bar-warning');
+          }
+          if (count > 150){
+              $('.progress-bar').removeClass('progress-bar-warning').addClass('progress-bar-danger');
+          }
+          if(count >= 0 && count < 150){
+              $('.progress-bar').removeClass('progress-bar-danger');
+              $('.progress-bar').removeClass('progress-bar-warning');         
+              $('.progress-bar').addClass('progress-bar-success')
+          }
+          
+      }
+      return false;
+  });
+});
 </script>

@@ -13,7 +13,7 @@ class StoriesController < ApplicationController
       story.title = params[:title]
       story.story_img = params[:img_file]
       if story.save
-        return
+        redirect_to "/stories/#{story.id}"
       else
         render json: {error: "error is here"}
       end

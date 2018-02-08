@@ -19,11 +19,11 @@ class StoryEntriesController < ApplicationController
   end
 
 
-  def api_all
-    redirect_to'/login' unless current_user.present?()
-    @story_entries = StoryEntry.all
-    render json: @story_entries
-  end
+  # def api_all
+  #   redirect_to'/login' unless current_user.present?()
+  #   @story_entries = StoryEntry.all
+  #   render json: @story_entries
+  # end
 
 
 

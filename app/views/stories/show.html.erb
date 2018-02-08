@@ -20,35 +20,38 @@
     <%= story_entry.user.banana %></span>
   <p><%= story_entry.body%></p>
 
-  <form action="/api/give_banana" method="post">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-    <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
-    <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
-    <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
-    <button class="give-bnn-btn"><img class="banana-icon give-bnn" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon"></button>
-  </form>
+  <% if current_user %>
+    <form action="/api/give_banana" method="post">
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
+      <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
+      <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
+      <button class="give-bnn-btn"><img class="banana-icon give-bnn" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon"></button>
+    </form>
+  <% end %>
 
- 
   <% end %> <!--end of current_story-->
 </div>
 
 
-
-<% if (current_user && !@story_entries.present?()) || (@story_entries.last.user_id !=  current_user.id) %>
-  <div class="new_entry ">
-    <form action="/api/stories_entries" method="post">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-      <input class="story_id_ipt" type="hidden" name="story_id" value="<%= @story.id %>">
-      <input class="current-user_id_ipt" type="hidden" name="user_id" value="<%= current_user.id %>">
-      <textarea class="text_body-ipt" name="body" rows="5" cols="100"></textarea>
-      <button class="submit">Enter</button>
-    </form>
-  </div>
+<% if current_user %>
+  <% if (current_user && !@story_entries.present?()) || (@story_entries.last.user_id !=  current_user.id) %>
+    <div class="new_entry ">
+      <form action="/api/stories_entries" method="post">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <input class="story_id_ipt" type="hidden" name="story_id" value="<%= @story.id %>">
+        <input class="current-user_id_ipt" type="hidden" name="user_id" value="<%= current_user.id %>">
+        <textarea class="text_body-ipt" name="body" rows="5" cols="100"></textarea>
+        <button class="submit">Enter</button>
+      </form>
+    </div>
+  <% end %>
 <% end %>
-<!-- 
+
+<!--
 <%# if @story_entries.last.user_id ==  current_user.id %>
   <div class="ask-to-wait">
-    Hoi, someone has been typing hard. 
+    Hoi, someone has been typing hard.
     wait a little! we are finding  someone to write after your last entry
   </div>
 <#%end%>
@@ -59,7 +62,7 @@
 <script>
 
 $('.give-bnn-btn').click(function(){
-  
+
 })
 
 
@@ -75,29 +78,32 @@ $('.submit').click(function(event){
     }
   }
 
-  $.ajax(options).done(function(response){
-    console.log(response)
-    console.log("response.user_id = "+response.user_id)
-    console.log("current_user.id = "+ <%= current_user.id %> )
+  <% if current_user %>
 
-    var $container = $('.current_story')
-    var $line = $('<hr>')
-    var $showUserId = $('<span>').text(response.user_id)
-    var $iconBox = $('<div>').attr('class','user-icon')
-    var $showUserImg = $('<img>').attr('src', "<%= current_user.image_url %>" )
-    var $showUserName = $('<span>').text( "<%= current_user.username %> ")
-    var $showUserBnn = $('<span>').text( "<%= current_user.banana %> ")
-    var $showStoryEntryBody = $('<p>').text(response.body)
-    $container.append($line)
-    $container.append($showUserId)
-    $iconBox.append($showUserImg)
-    $container.append($iconBox)
-    $container.append($showUserName)
-    $container.append($showUserBnn)
-    $container.append($showStoryEntryBody)
+    $.ajax(options).done(function(response){
+      console.log(response)
+      console.log("response.user_id = "+response.user_id)
+      // console.log("current_user.id = "+ <%#= current_user.id %> )
 
-   $(".new_entry").addClass("hide");
-  })
+      var $container = $('.current_story')
+      var $line = $('<hr>')
+      var $showUserId = $('<span>').text(response.user_id)
+      var $iconBox = $('<div>').attr('class','user-icon')
+      var $showUserImg = $('<img>').attr('src', "<%= current_user.image_url %>" )
+      var $showUserName = $('<span>').text( "<%= current_user.username %> ")
+      var $showUserBnn = $('<span>').text( "<%= current_user.banana %> ")
+      var $showStoryEntryBody = $('<p>').text(response.body)
+      $container.append($line)
+      $container.append($showUserId)
+      $iconBox.append($showUserImg)
+      $container.append($iconBox)
+      $container.append($showUserName)
+      $container.append($showUserBnn)
+      $container.append($showStoryEntryBody)
+
+     $(".new_entry").addClass("hide");
+    })
+  <% end %>
 })
 
 </script>

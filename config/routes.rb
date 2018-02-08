@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post '/api/stories_entries', to: 'story_entries#api_create_story_entry'
 
   # post '/api/create', to: 'story_entries#api_create'
-  get '/api/all', to: 'story_entries#api_all'
+  # get '/api/all', to: 'story_entries#api_all'
   #banana_transactions_database
   post '/give_banana', to: 'banana_transactions#give_banana'
   #sellbanana_landing_page

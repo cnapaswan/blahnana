@@ -6,13 +6,17 @@ class StoriesController < ApplicationController
   end
 
   def create
-    story = Story.new
-    story.title = params[:title]
-    story.story_img = params[:img_file]
-    if story.save 
-      redirect_to "/stories/#{story.id}"
+    if !current_user
+      redirect_to '/login'
     else
-      render json: {error: "error is here"}
+      story = Story.new
+      story.title = params[:title]
+      story.story_img = params[:img_file]
+      if story.save
+        return
+      else
+        render json: {error: "error is here"}
+      end
     end
   end
 

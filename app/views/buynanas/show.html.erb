@@ -7,6 +7,7 @@
     <span>=$<%= product.price %></span>
   <%= form_tag charges_path do %>
   <input type="hidden" name="price" value="<%= product.price %>">
+  <input type="hidden" name="item_count" value="<%= product.item_count %>">
     <article>
       <% if flash[:error].present? %>
         <div id="error_explanation">

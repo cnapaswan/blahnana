@@ -4,6 +4,7 @@ class ChargesController < ApplicationController
 
 	def create
 		price = params[:price].to_f * 100
+		item_count = params[:item_count]
 
 		customer = Stripe::Customer.create(
 		:email => params[:stripeEmail],
@@ -19,8 +20,7 @@ class ChargesController < ApplicationController
 		)
 
 		@user = User.find(session[:user_id])
-
-		@user.banana = @user.banana + 60
+		@user.banana = @user.banana + item_count.to_i
 		@user.save
 
 		redirect_to '/'

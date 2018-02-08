@@ -17,12 +17,13 @@ Rails.application.routes.draw do
   get '/api/stories', to: 'stories#api_show'
 
   #stories_entries_database
-  post '/api/stories_entries', to: 'story_entries#api_create'
+  post '/api/stories_entries', to: 'story_entries#api_create_story_entry'
 
-  post '/api/create', to: 'story_entries#api_create'
+  # post '/api/create', to: 'story_entries#api_create'
   get '/api/all', to: 'story_entries#api_all'
   #banana_transactions_database
-  post '/give_banana', to: 'banana_transactions#create'
+  # post '/give_banana', to: 'banana_transactions#create'
+  post '/api/give_banana', to: 'banana_transactions#api_create_give_bnn'
   #sellbanana_landing_page
   get '/buynana', to: 'buynanas#show'
   #error

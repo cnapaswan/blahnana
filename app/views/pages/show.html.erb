@@ -42,19 +42,4 @@ $('.new-story-btn').click(function(){
   $('.new-story-form').removeClass('hide')
 })
 
-$('.create-btn').click(function(){
-  var options = {
-    url: '/api/stories',
-    method: 'get'
-  }
-  $.ajax(options).done(function(res){
-    $storiesCon = $('.stories-container')
-    $storyCon = $('<div>').attr('class','story-con')
-    $storyLink = $('<a>').attr('href',"/stories/"+res.id).text(res.title)
-    $newImg = $('<img>').attr('src',res.story_img.url)
-    $storyLink.append($newImg)
-    $storyCon.append($storyLink)
-    $storiesCon.append($storyCon)
-  })
-})
 </script>

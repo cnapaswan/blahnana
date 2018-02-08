@@ -25,4 +25,11 @@ class StoriesController < ApplicationController
     render json: story
   end
 
+  def destroy
+    redirect_to'/login' unless admin?
+    story = Story.find(params[:story_id])
+    story.destroy
+    redirect_to '/'
+  end
+
 end

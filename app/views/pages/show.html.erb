@@ -27,12 +27,25 @@
 
 <div class="stories-container">
   <% @stories.each do |story| %>
-  <div class="story-con">
-    <a href="/stories/<%=story.id%>">
-      <%= story.title%>
-      <img src="<%= story.story_img%>" alt="">
-    </a>
-  </div>
+    <div class="story-con">
+      <a href="/stories/<%=story.id%>">
+        <%= story.title%>
+        <img src="<%= story.story_img%>" alt="">
+      </a>
+    </div>
+    <% if admin? %>
+      <div class="delete-story">
+        <form class="" action="/stories/<%=story.id %>" method="post">
+          <input type="hidden" name="_method" value="delete">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+          <input type="hidden" name="story_id" value="<%=story.id%>">
+          <button class="delete-story-btn">
+            Delete Story
+          </button>
+        </form>
+
+      </div>
+    <% end %>
   <%end%>
 </div>
 

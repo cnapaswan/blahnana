@@ -1,4 +1,4 @@
 class Story < ApplicationRecord
   mount_uploader :story_img, StoryImgUploader
-  has_many :story_entries
+  has_many :story_entries, dependent: :destroy
 end

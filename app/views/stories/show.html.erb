@@ -10,25 +10,31 @@
 <div class="current_story">
 
   <% @story_entries.each do |story_entry| %>
-  <hr>
-  <span><%= story_entry.user_id%></span>
-  <div class="user-icon">
-    <img src="<%= story_entry.user.image_url%>" alt="">
+  <div class="story-entry">
+    <hr>
+    <input type="hidden" value="<%= story_entry.id %>">
+    <span class="entry-user-id"><%= story_entry.user_id%></span>
+    <div class="user-icon">
+      <img src="<%= story_entry.user.image_url%>" alt="">
+    </div>
+    <span><%= story_entry.user.username%></span>
+    <span class="entry_user_bnn"><%= story_entry.user.banana %></span>
+    <p><%= story_entry.body%></p>
+
+
+    
+    <form action="/give_banana" method="post">
+      <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+      <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
+      <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
+      <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
+      <button class="give-bnn-btn"><img class="banana-icon give-bnn" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon"></button>
+    </form>
+
+
+
+
   </div>
-  <span><%= story_entry.user.username%></span>
-  <span class="entry_user_bnn">
-    <%= story_entry.user.banana %></span>
-  <p><%= story_entry.body%></p>
-
-  <form action="/api/give_banana" method="post">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-    <input type="hidden" name="source_user_id" value="<%=current_user.id%>">
-    <input type="hidden" name="target_user_id" value="<%=story_entry.user_id %>">
-    <input type="hidden" name="story_entry_id" value="<%=story_entry.id%>">
-    <button class="give-bnn-btn"><img class="banana-icon give-bnn" src="https://www.clker.com/cliparts/f/1/e/9/H/i/banana-md.png" alt="bananaicon"></button>
-  </form>
-
- 
   <% end %> <!--end of current_story-->
 </div>
 
@@ -45,22 +51,18 @@
     </form>
   </div>
 <% end %>
-<!-- 
-<%# if @story_entries.last.user_id ==  current_user.id %>
+ 
+<% if @story_entries.last.user_id ==  current_user.id %>
   <div class="ask-to-wait">
     Hoi, someone has been typing hard. 
     wait a little! we are finding  someone to write after your last entry
   </div>
-<#%end%>
- -->
+<%end%>
+
 
 
 
 <script>
-
-$('.give-bnn-btn').click(function(){
-  
-})
 
 
 $('.submit').click(function(event){
@@ -101,3 +103,32 @@ $('.submit').click(function(event){
 })
 
 </script>
+
+
+
+
+<!-- 
+  i tried to do ajax on updating banana
+  but i can't
+
+
+$('.give-bnn-btn').click(function(event){
+  var options = {
+    url: '/api/give_banana',
+    method: 'post',
+    data: {
+      source_user_id: <%=current_user.id%>,
+      target_user_id: $('event.target').closest('.story-entry').find('.entry-user-id').val(),
+      story_entry_id: $('event.target').closest('.story-entry').find('input').val()
+    }
+  }
+
+  $.ajax(options).done(function(res){
+    console.log(res)
+    $test = $('<div>').val('im working')
+
+    $('.current_story').append($test)
+
+  })
+
+}) -->

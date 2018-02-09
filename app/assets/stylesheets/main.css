@@ -450,6 +450,11 @@ textarea.form-control {
 }
 /*buynana end*/
 /*login page starts*/
+.login-panel {
+  width: 60%;
+  margin: 0 auto;
+  background-color: red;
+}
 
 h1.login-head {
   font-family: 'Fredoka One', cursive;

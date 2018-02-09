@@ -449,4 +449,12 @@ textarea.form-control {
   right: 75px;
 }
 /*buynana end*/
+/*login page starts*/
+
+h1.login-head {
+  font-family: 'Fredoka One', cursive;
+  font-size: 3em;
+}
+
+/*login ends*/
 

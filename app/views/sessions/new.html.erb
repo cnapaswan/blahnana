@@ -1,14 +1,18 @@
-<h1>PLEASE LOGIN BELOW</h1>
+ <div class="login-panel"> 
+  <h1 class="login-head">  
+  login and go wild mate!
+  </h1>
 
-<form action="/login" method="post">
-   <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-  <label for="">Email</label>
-  <input type="text" name="email">
-  <label for="">Password</label>
-  <input type="text" name="password">
-  <button>login</button>
-</form>
+  <form action="/login" method="post">
+     <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <label for="">Email</label>
+    <input type="text" name="email">
+    <label for="">Password</label>
+    <input type="text" name="password">
+    <button>login</button>
+  </form>
 
-<a href="/signup">
-  <button class="signup">sign up</button>
-</a>
+  <a href="/signup">
+    <button class="signup">sign up</button>
+  </a>
+</div>

@@ -1,22 +1,3 @@
-# README
-
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-A readme.md file with:
-
-Explanations of the technologies used
-
-A few paragraphs about the general approach you took
-
-Link to your user stories – who are your users, what do they want, and why?
-
-Link to your wireframes – sketches of major views / interfaces in your application
-
-Link to your diagrams - database schema
-
-Descriptions of any unsolved problems or major hurdles your team had to overcome
-
-$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
 Blahnana.
 
@@ -31,7 +12,7 @@ Blanana was conceived by Mia as an idea for our third course project. The team c
 App site address: http://blahnana.herokuapp.com
 
 <!-- ![GitHub Logo](/images/logo.png) -->
-![Db Schema](/app/images/db_structure.png)
+![Db Schema](/images/db_structure.png)
 
 
 

@@ -343,6 +343,11 @@ img.banana-icon-64 {
   width: 75%;
   padding: 5%;
   font-size: 1.5em;
+
+}
+
+.blah>p {
+  overflow-wrap: break-word;
 }
 
 .give-bnn-btn {

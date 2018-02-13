@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore.js"></script>
 
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -28,6 +29,7 @@
           <%= image_tag "logo.png" %>
         </a>
       </div>
+      <button class="switch">Change Theme</button>
 
       <% if current_user %>
       <div class="user-panel-head">
@@ -68,4 +70,53 @@
   <footer>
     © Mia-Jennifer-Wally Press and Contributors 2018
   </footer>
+  <script type="text/javascript">
+/*
+  var intervalId;
+  var unicorn = false;
+  var $body = $('body');
+  $('.switch').on('click', function() {
+    console.log('hi')
+    if (!unicorn) {
+      intervalId = setInterval(function() {
+        var $body = $('body');
+        var color = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+        var insertColor = _.sample(color);
+        $body.attr('class', insertColor);
+      }, 200)
+      unicorn = true;
+    } else {
+      clearInterval(intervalId); 
+      unicorn = false;
+      $body.removeClass().addClass('c6');
+    }
+  }) 
+*/
+
+
+var intervalId;
+var $body = $('body');
+var unicorn = false;
+  $('.switch').on('click', function(){ 
+    var color = ['c1', 'c2', 'c3', 'c4', 'c5', 'c6'];
+    var indexC =-1;
+    if (!unicorn) {
+      intervalId = setInterval(function(){        
+        $body.attr('class', color[indexC]);
+        indexC++;
+        
+        if (indexC === color.length) {
+          indexC = -1;
+        }
+      }, 100)
+      unicorn = true;
+    } else {
+      clearInterval(intervalId);
+      unicorn = false;
+      $body.removeClass().addClass('c6');
+    }
+  });
+
+
+</script>
 </html>

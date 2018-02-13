@@ -42,3 +42,6 @@ Feature: Progress bar
 Source: http://carlofontanos.com/character-count-with-live-progress-bar-using-jquery/
 Date accessed: February 8th 2018
 Comments: The link also provides jQuery code.
+
+Feature: Stripe
+Source:https://stripe.com/docs/checkout/rails

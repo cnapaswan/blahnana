@@ -1,4 +1,4 @@
-### Blahnana.
+# Blahnana.
 
   **launch it [here](https://blahnana.herokuapp.com/)**
 
@@ -16,11 +16,11 @@ Additionally, members are able to show appreciation for the wit or otherwise of 
 - [Stripe](https://stripe.com/docs/checkout/rails)
 - [Progress bar](http://carlofontanos.com/character-count-with-live-progress-bar-using-jquery/)
 
-** web app hosted on Heroku **
-** database hosted on AWS - S3 **
+### web app hosted on Heroku 
+### database hosted on AWS - S3
 
 ## Database
-![Db Schema](/assets/images/db_structure.png)
+![Db Schema](https://ibb.co/cjnV9c)
 
 ## License
 

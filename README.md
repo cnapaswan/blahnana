@@ -1,4 +1,4 @@
-###Blahnana.
+### Blahnana.
 
   **launch it [here](https://blahnana.herokuapp.com/)**
 
@@ -6,7 +6,7 @@ Is an app which allows people to interact and collaborate in an on-line environm
 
 Additionally, members are able to show appreciation for the wit or otherwise of someones contribution by clicking on that persons "banana", thereby increasing that persons banana count. Bananas (20 off) are allocated to each new member to start off. Additional bananas can be purchased (test mode currently) with discount for volume. The person showing appreciation has their banana count decreased accordingly. Admin reserves the right to delete stories as and when deemed they see fit. All bananas then belonging to the recipients.
 
-##Built with
+## Built with
 
 - Ruby on Rails
 - PostgreSQL
@@ -16,8 +16,8 @@ Additionally, members are able to show appreciation for the wit or otherwise of 
 - [Stripe](https://stripe.com/docs/checkout/rails)
 - [Progress bar](http://carlofontanos.com/character-count-with-live-progress-bar-using-jquery/)
 
-** web app hosted on Heroku**
-** database hosted on AWS - S3
+** web app hosted on Heroku **
+** database hosted on AWS - S3 **
 
 ## Database
 ![Db Schema](/assets/images/db_structure.png)

@@ -16,11 +16,11 @@ Additionally, members are able to show appreciation for the wit or otherwise of 
 - [Stripe](https://stripe.com/docs/checkout/rails)
 - [Progress bar](http://carlofontanos.com/character-count-with-live-progress-bar-using-jquery/)
 
-### web app hosted on Heroku 
-### database hosted on AWS - S3
+#### web app hosted on Heroku 
+#### database hosted on AWS - S3
 
 ## Database
-![Db Schema](https://ibb.co/cjnV9c"><img src="https://preview.ibb.co/kyc8vH/db_structure.png)
+![Db Schema](https://preview.ibb.co/kyc8vH/db_structure.png "blahnana database")
 
 ## License
 

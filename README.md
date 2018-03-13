@@ -20,7 +20,7 @@ Additionally, members are able to show appreciation for the wit or otherwise of 
 ### database hosted on AWS - S3
 
 ## Database
-![Db Schema](https://ibb.co/cjnV9c)
+![Db Schema](https://ibb.co/cjnV9c"><img src="https://preview.ibb.co/kyc8vH/db_structure.png)
 
 ## License
 

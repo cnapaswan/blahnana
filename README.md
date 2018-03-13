@@ -1,28 +1,28 @@
+###Blahnana.
 
-Blahnana.
+  **launch it [here](https://blahnana.herokuapp.com/)**
 
-Is an app which allows people to interact and collaborate in an on-line environment to the construction of stories that can take twists and turns as they each contribute a sentence or so (up to 200 characters in length) at a time. it is aimed at a range of people, from those who enjoy literature, the novelty of contributing to what may be a quirky story, or who may want to improve their english (curremtly) writing skills. People are able to select existing stories and read through them as they are built by existing members. Upon registration individuals are then able to contrbute to the making of these stories by adding to the end of them. Members can also initiate a new story Title, and then the opening lines. They then have to wait for at least one other person to contribute before being able to enter anything more. The more different people contribute; the more directions the stoy could take.
+Is an app which allows people to interact and collaborate in an on-line environment to the construction of stories that can take twists and turns as they each contribute a sentence or so (up to 200 characters in length) at a time. it is aimed at a range of people, from those who enjoy literature, the novelty of contributing to what may be a quirky story, or who may want to improve their english (currently) writing skills. People are able to select existing stories and read through them as they are built by existing members. Upon registration individuals are then able to contrbute to the making of these stories by adding to the end of them. Members can also initiate a new story Title, and then the opening lines. They then have to wait for at least one other person to contribute before being able to enter anything more. The more different people contribute; the more directions the stoy could take.
 
 Additionally, members are able to show appreciation for the wit or otherwise of someones contribution by clicking on that persons "banana", thereby increasing that persons banana count. Bananas (20 off) are allocated to each new member to start off. Additional bananas can be purchased (test mode currently) with discount for volume. The person showing appreciation has their banana count decreased accordingly. Admin reserves the right to delete stories as and when deemed they see fit. All bananas then belonging to the recipients.
 
-Blahnana is constructed using Html, CSS, Javascript and Ruby languages, jQuery library, Rails application framework, Postgresql database for the storing of user details, story and story entries, banana allocations and Ajax to assist with some page updating and improved user experience.
+##Built with
 
-Blanana was conceived by Mia as an idea for our third course project. The team consisted of Mia, Jen and Wally. After drawing up a framework of the desired and required pages, and the database tables required, the major tasks were allocated with the smaller tasks, debugging and testing being carried out subsequently as the major ones were completed. The Blanana app is hosted and operates on the Heroku cloud application platform with the database located on Amazon Web Services platform. The financial component was implemented by utilizing the Stripe api. Each site requiring security keys for access
+- Ruby on Rails
+- PostgreSQL
+- HTML
+- CSS
+- JS / jQuery
+- [Stripe](https://stripe.com/docs/checkout/rails)
+- [Progress bar](http://carlofontanos.com/character-count-with-live-progress-bar-using-jquery/)
 
-App site address: http://blahnana.herokuapp.com
+** web app hosted on Heroku**
+** database hosted on AWS - S3
 
-<!-- ![GitHub Logo](/images/logo.png) -->
-![Db Schema](/images/db_structure.png)
+## Database
+![Db Schema](/assets/images/db_structure.png)
 
+## License
 
-
-
-
-Acknowledgements
-Feature: Progress bar
-Source: http://carlofontanos.com/character-count-with-live-progress-bar-using-jquery/
-Date accessed: February 8th 2018
-Comments: The link also provides jQuery code.
-
-Feature: Stripe
-Source:https://stripe.com/docs/checkout/rails
+MIT © [cnapaswan](https://github.com/cnapaswan)
+Jennifer and Wally
